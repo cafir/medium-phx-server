@@ -12,7 +12,10 @@ defmodule Serverside.Repo.Migrations.CreateUsers do
       timestamps()
     end
     create(
-      unique_index(:users, [:first_name, :last_name, :email])
+      unique_index(
+        :users,
+        [:email]
+      )
     )
   end
 end

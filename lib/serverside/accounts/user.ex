@@ -17,8 +17,17 @@ defmodule Serverside.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:first_name, :last_name, :email, :password_hash, :role])
-    |> validate_required([:first_name, :last_name, :email, :password_hash, :role])
+    |> cast(attrs, [:first_name, :last_name, :email, :password, :password_confirmation, :role])
+    |> validate_required([:first_name, :last_name, :email, :password, :password_confirmation, :role])
+    |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
+    |> update_change(:email, &String.downcase(&1))
+    |> validate_length(:password, min: 6, max: 100)
+    |> validate_confirmation(:password)
+    |> hash_password
+  end
+
+  defp hash_password(changeset) do
+    changeset
   end
 end
