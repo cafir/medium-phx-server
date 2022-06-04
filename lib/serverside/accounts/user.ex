@@ -27,6 +27,10 @@ defmodule Serverside.Accounts.User do
     |> hash_password
   end
 
+  defp hash_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do
+    change(changeset, Argon2.add_hash(password))
+  end
+
   defp hash_password(changeset) do
     changeset
   end
