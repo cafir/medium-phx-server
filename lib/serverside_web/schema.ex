@@ -1,9 +1,10 @@
 defmodule ServersideWeb.Schema
-use Absinthe.Schema
+    use Absinthe.Schema
 
-#import 
+    #import
+    import_types(ServersideWeb.Schema.Types) 
 
-query do
-end
+    query do
+    end
 
 end
