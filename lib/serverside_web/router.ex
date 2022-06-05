@@ -14,10 +14,14 @@ defmodule ServersideWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ServersideWeb do
-    pipe_through :browser
+  scope "/api" do
+    pipe_through(:api)
 
-    get "/", PageController, :index
+    forward("/graphql", Absinthe.Plug, schema: Serverside.Schema)
+
+    if Mix.env() == :dev do
+      forward("/graphql", Absinthe.Plug.GraphiQL, schema: Serverside.Schema)
+    end
   end
 
   # Other scopes may use custom stacks.
