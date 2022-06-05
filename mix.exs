@@ -52,7 +52,7 @@ defmodule Serverside.MixProject do
       {:comeonin, "~> 5.3"},
       {:argon2_elixir, "~> 2.0"},
       {:absinthe, "~> 1.7"},
-      {:absinthe_plug, "~> 1.5.0"},
+      {:absinthe_plug, "~> 1.5.0"}
     ]
   end
 

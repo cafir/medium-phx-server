@@ -1,5 +1,5 @@
 defmodule ServersideWeb.Schema.Types.UserType do
-    use Absinthe.Schema.Mutation
+    use Absinthe.Schema.Notation
 
     object :user_type do
         field(:id, :id)

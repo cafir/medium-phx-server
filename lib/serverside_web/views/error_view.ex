@@ -1,5 +1,5 @@
 defmodule ServersideWeb.ErrorView do
-  use ServersideWeb, :view
+  # use ServersideWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
